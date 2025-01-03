@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vendor Names List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7f7; /* Light teal background */
+            color: #003333; /* Dark teal text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #004d4d; /* Teal shade */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff; /* White table background */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #99cccc; /* Light teal border */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #006666; /* Darker teal header */
+            color: #ffffff; /* White text for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #ccf2f2; /* Light teal for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f0f9f9; /* Very light teal for odd rows */
+        }
+
+        p {
+            text-align: center;
+            color: #004d4d; /* Teal text for messages */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Vendor Name List Count</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Vendor Name</th>
+        <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="items : ${vendornamecount}">
+        <td th:text="${items.key}"></td>
+        <td th:text="${items.value}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

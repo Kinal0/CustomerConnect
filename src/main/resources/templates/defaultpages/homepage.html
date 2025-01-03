@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            max-width: 450px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1:nth-of-type(2) {
+            font-size: 1.5rem;
+            color: #f6c500; /* Accent color */
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        button {
+            background: #f6c500; /* Accent color */
+            color: #121212;
+            border: none;
+            padding: 1rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(246, 197, 0, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(246, 197, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Hello!</h1>
+    <h1 th:text="*{username}" ></h1>
+    <h1>Welcome to Our Portal</h1>
+
+    <div class="button-group">
+        <form th:action="@{/customersection/read}">
+            <button type="submit">Customer</button>
+        </form>
+
+        <form th:action="@{/vendorsection/read}">
+            <button type="submit">Vendor</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

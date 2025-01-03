@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Users</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212; /* Black background */
+            margin: 0;
+            padding: 2rem;
+            color: #ffffff; /* White text */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff6e6e; /* Light red accent */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: #1e1e1e; /* Dark gray for table background */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead tr {
+            background: #ff6e6e; /* Light red accent */
+            color: #ffffff;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #1b1b1b; /* Slightly lighter gray for alternating rows */
+        }
+
+        tbody tr:hover {
+            background: #292929; /* Highlight on hover */
+            cursor: pointer;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #ff6e6e; /* Light red accent */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table, th, td {
+                font-size: 0.9rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Active Users</h1>
+<table>
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Created Date</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user : ${userlist}">
+        <td th:text="${user.userid}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${#dates.format(user.createddate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:if="${#lists.isEmpty(userlist)}">No customers found.</p>
+
+</body>
+</html>

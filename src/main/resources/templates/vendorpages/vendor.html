@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vendor List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f6f5; /* Light blue-teal background */
+            color: #003b46; /* Dark teal text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #07575b; /* Darker blue-teal */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff; /* White background for table */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #66a5ad; /* Teal border */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004d4d; /* Dark teal for headers */
+            color: #ffffff; /* White text for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #d8f3f2; /* Light blue-teal for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f1fcfc; /* Very light blue-teal for odd rows */
+        }
+
+        p {
+            text-align: center;
+            color: #07575b; /* Blue-teal text for messages */
+            margin-top: 20px;
+        }
+
+        /* Add some hover effects for better interactivity */
+        tr:hover {
+            background-color: #b3e0df; /* Highlighted teal on hover */
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #43bda9; /* Coral-red background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        button:hover {
+            background-color: #003b46; /* Darker red on hover */
+            transform: scale(1.05); /* Slight scaling effect */
+        }
+
+        button:active {
+            background-color: #30a2a9; /* Even darker red when clicked */
+        }
+    </style>
+</head>
+<body>
+<h1>Vendor List</h1>
+<form th:action="@{/vendorsection/add}" method="get">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button type="submit">Add Vendor</button>
+    </div>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Vendor ID</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Last Update</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vendor : ${vendorlistforhtml}">
+        <td th:text="${vendor.vendorid}"></td>
+        <td th:text="${vendor.name}"></td>
+        <td th:text="${vendor.contact}"></td>
+        <td th:text="${vendor.email}"></td>
+        <td th:text="${vendor.address}"></td>
+        <td th:text="${vendor.phone}"></td>
+        <td th:text="${vendor.lastupdate}"></td>
+        <td>
+            <form th:action="@{/vendorsection/delete}" method="get">
+                <button type="submit" name="id" th:value="${vendor.vendorid}">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/vendorsection/update}" method="get">
+                <button type="submit" name="id" th:value="${vendor.vendorid}">Update</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:if="${#lists.isEmpty(vendorlistforhtml)}">No customers found.</p>
+</body>
+</html>

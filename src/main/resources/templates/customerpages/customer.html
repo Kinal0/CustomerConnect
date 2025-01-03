@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer List</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Black background */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fa7518; /* Light orange accent */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1e1e1e; /* Dark gray for the table */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #fa7518; /* Light orange for header */
+            color: #121212; /* Dark text for contrast */
+        }
+
+        td {
+            background-color: #2b2b2b; /* Darker gray for rows */
+            color: #ffffff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #242424; /* Alternate row color */
+        }
+
+        tbody tr:hover {
+            background-color: #333333; /* Highlight on hover */
+            cursor: pointer;
+        }
+
+        /* Center-align and reduce width for the Customer ID column */
+        th:first-child, td:first-child {
+            width: 50px;
+            text-align: center;
+        }
+
+        /* Buttons Styling */
+        button {
+            background-color: #FFA726; /* Light orange background */
+            color: #121212; /* Dark text */
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        button:hover {
+            background-color: #FF9800; /* Darker orange on hover */
+            transform: scale(1.05); /* Slight scaling effect */
+        }
+
+        button:active {
+            background-color: #EF6C00; /* Darkest orange when clicked */
+        }
+
+        /* Center the "No customers found" message */
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #FFA726; /* Light orange accent */
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table, th, td {
+                font-size: 0.9rem;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Customer List</h1>
+
+<form th:action="@{/customersection/add}" method="get">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button type="submit">Add Customer</button>
+    </div>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Customer ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Registration Date</th>
+        <th>Last Updated</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customerlistforhtml}">
+        <td th:text="${customer.customerid}"></td>
+        <td th:text="${customer.fname}"></td>
+        <td th:text="${customer.lname}"></td>
+        <td th:text="${customer.city}"></td>
+        <td th:text="${customer.state}"></td>
+        <td th:text="${customer.zipcode}"></td>
+        <td th:text="${#dates.format(customer.registrationdate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(customer.last_updated, 'yyyy-MM-dd')}"></td>
+        <td>
+            <form th:action="@{/customersection/delete}" method="get">
+                <button type="submit" name="id" th:value="${customer.customerid}">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/customersection/update}" method="get">
+                <button type="submit" name="id" th:value="${customer.customerid}">Update</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:if="${#lists.isEmpty(customerlistforhtml)}">No customers found.</p>
+</body>
+</html>

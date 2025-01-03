@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Customer</title>
+</head>
+<body>
+
+<form th:action="@{/customersection/update}" th:object="${customer}" method="post">
+
+    <input type="text" th:field="*{customerid}" readonly>
+    <input type="text" th:field="*{registrationdate}" readonly>
+    <input type="text" th:field="*{last_updated}" readonly>
+
+    <input type="text" th:field="*{lname}">
+    <input type="text" th:field="*{fname}">
+    <input type="text" th:field="*{city}">
+    <input type="text" th:field="*{state}">
+    <input type="number" th:field="*{zipcode}">
+
+
+
+
+<button type="submit">Update Customer</button>
+
+</form>
+
+
+
+</body>
+</html>
