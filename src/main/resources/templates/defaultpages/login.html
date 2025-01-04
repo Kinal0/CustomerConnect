@@ -30,8 +30,8 @@
 
         h1 {
             margin-bottom: 1rem;
-            font-size: 1.8rem;
-            color: #0051ff; /* Accent color */
+            font-size: 2.5rem;
+            color: rgba(255, 69, 247, 0.76); /* Accent color */
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -55,7 +55,7 @@
 
         input:focus {
             outline: none;
-            border: 1px solid #0056b3; /* Accent color */
+            border: 1px solid rgba(255, 106, 248, 0.76); /* Accent color */
         }
 
         button {
@@ -64,7 +64,7 @@
             margin-top: 1.5rem;
             border: none;
             border-radius: 25px;
-            background: linear-gradient(45deg, #00f, #0056b3); /* Blue accent */
+            background: linear-gradient(45deg, rgba(255, 17, 244, 0.76), rgba(255, 111, 248, 0.76)); /* Blue accent */
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
@@ -75,12 +75,12 @@
 
         button:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 255, 0.6);
+            box-shadow: 0 6px 15px rgba(203, 0, 195, 0.76);
         }
 
         button:active {
             transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(0, 0, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(203, 29, 195, 0.76);
         }
     </style>
 </head>
@@ -92,10 +92,16 @@
         <input type="text" id="username" name="name" placeholder="Enter your username">
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="pass" placeholder="Enter your password">
+        <input type="text" id="password" name="pass" placeholder="Enter your password">
 
         <button type="submit">Login</button>
+
     </form>
+        <form th:action="@{/signup}" method="get">
+            <button type="submit">Sign Up</button>
+        </form>
+
+
 </div>
 </body>
 </html>

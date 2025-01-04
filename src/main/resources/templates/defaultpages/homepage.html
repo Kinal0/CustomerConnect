@@ -81,6 +81,7 @@
     <h1>Welcome to Our Portal</h1>
 
     <div class="button-group">
+
         <form th:action="@{/customersection/read}">
             <button type="submit">Customer</button>
         </form>
@@ -91,6 +92,10 @@
 
         <form th:action="@{/user}">
             <button type="submit">All User</button>
+        </form>
+
+        <form th:action="@{/login}">
+            <button type="submit">Sign Out</button>
         </form>
     </div>
 </div>

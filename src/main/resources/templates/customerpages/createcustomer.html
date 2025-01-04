@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff5e6;
-            color: #333;
+            background-color: #1c1c1c; /* Black background */
+            color: #b9b9b9; /* White text */
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,40 +17,49 @@
             height: 100vh;
         }
 
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #de611c; /* Orange header */
+        }
+
         form {
-            background-color: #ffcccb;
-            border: 2px solid #fa7518; /* Orange accent */
+            background-color: #313131; /* Lighter gray background for form */
+            border: 2px solid #575757; /* Orange border for form */
             border-radius: 10px;
-            padding: 20px;
+            padding: 30px;
             width: 350px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(28, 28, 28, 0.2);
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px; /* Increased margin for more spacing */
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
-            color: #b22222;
+            color: #a1a1a1; /* Dark gray for label text */
         }
 
         input[type="text"],
         input[type="number"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #fa7518; /* Orange accent */
+            padding: 12px;
+            border: 1px solid #ffa500; /* Orange border for inputs */
             border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fff;
+            background-color: #808080;
+            color: #333; /* Dark text for input */
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensure padding doesn't cause overflow */
         }
 
         input:focus {
             outline: none;
-            border-color: #e64a19; /* Slightly darker orange for focus */
-            box-shadow: 0 0 5px rgba(255, 69, 0, 0.5); /* Orange glow on focus */
+            border-color: #ff6f00; /* Darker orange when focused */
+            box-shadow: 0 0 8px rgba(255, 105, 0, 0.5); /* Orange glow effect */
         }
 
         .form-group1 {
@@ -58,53 +67,54 @@
         }
 
         button {
-            background-color: #fa7518; /* Orange accent */
-            color: #fff;
+            background-color: #de611c; /* Orange button */
+            color: #2a2a2a;
             border: none;
             border-radius: 5px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #e64a19; /* Darker orange on hover */
+            background-color: #ff6f00; /* Darker orange on hover */
         }
     </style>
 </head>
 <body>
+<div>
+    <h1>Create Customer</h1>
+    <form th:action="@{/customersection/add}" th:object="${customer}" method="post">
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" th:field="*{lname}" required>
+        </div>
 
-<form th:action="@{/customersection/add}" th:object="${customer}" method="post">
-    <div class="form-group">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" th:field="*{lname}" required>
-    </div>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" th:field="*{fname}" required>
+        </div>
 
-    <div class="form-group">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" th:field="*{fname}" required>
-    </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" th:field="*{city}" required>
+        </div>
 
-    <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" id="city" th:field="*{city}" required>
-    </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" id="state" th:field="*{state}" required>
+        </div>
 
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" id="state" th:field="*{state}" required>
-    </div>
+        <div class="form-group">
+            <label for="zipcode">Zip Code</label>
+            <input type="number" id="zipcode" th:field="*{zipcode}" required>
+        </div>
 
-    <div class="form-group">
-        <label for="zipcode">Zip Code</label>
-        <input type="number" id="zipcode" th:field="*{zipcode}" required>
-    </div>
-
-    <div class="form-group1">
-        <button type="submit">Add Customer</button>
-    </div>
-</form>
-
+        <div class="form-group1">
+            <button type="submit">Add Customer</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

@@ -6,8 +6,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #F9F9F9; /* Light gray background */
-            color: #333333; /* Dark gray text */
+            background-color: #121212; /* Dark black background for dark mode */
+            color: #e0e0e0; /* Light gray text for high contrast */
             margin: 0;
             padding: 20px;
         }
@@ -16,36 +16,41 @@
             text-align: center;
             color: #FA7518; /* Bright orange for the title */
             margin-bottom: 20px;
+            font-size: 2.5rem; /* Larger font size for the title */
+            font-weight: bold;
         }
 
         form {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #FFFFFF; /* White background for form */
+            background-color: #333333; /* Dark gray background for the form */
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Deeper shadow for better depth */
         }
 
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #333333;
+            margin-bottom: 10px;
+            color: #e0e0e0; /* Light text for labels */
+            font-size: 1rem;
         }
 
         input[type="text"], input[type="number"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #E0E0E0; /* Light gray border */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #555555; /* Darker border for input fields */
             border-radius: 5px;
+            background-color: #222222; /* Darker background for input fields */
+            color: #e0e0e0; /* Light text for input fields */
+            font-size: 1rem;
             box-sizing: border-box;
-            font-size: 1em;
         }
 
         input[readonly] {
-            background-color: #F4F4F4; /* Light gray for readonly fields */
+            background-color: #444444; /* Slightly lighter gray for readonly fields */
             color: #888888; /* Muted text for readonly fields */
         }
 
@@ -53,13 +58,14 @@
             background-color: #FA7518; /* Bright orange */
             color: #FFFFFF; /* White text */
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 1.1rem;
             cursor: pointer;
             display: block;
-            margin: 0 auto;
+            margin: 20px auto 0;
             transition: background-color 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
@@ -73,7 +79,7 @@
         input:focus {
             outline: none;
             border-color: #FA7518; /* Orange outline on focus */
-            box-shadow: 0 0 5px rgba(250, 117, 24, 0.5); /* Subtle orange glow */
+            box-shadow: 0 0 8px rgba(250, 117, 24, 0.5); /* Subtle orange glow */
         }
     </style>
 </head>

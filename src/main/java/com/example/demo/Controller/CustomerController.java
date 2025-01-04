@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class CustomerController {
 
     @GetMapping("/show")
     public String statecount(Model model){
-
+        ArrayList<Integer> name = new ArrayList<>();
         List<Customer> customerlist = customerRepository.findAll();
 
         HashMap<String, Integer> statemap = new HashMap<String, Integer>();
