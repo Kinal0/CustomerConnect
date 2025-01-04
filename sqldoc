@@ -1,0 +1,53 @@
+create database Customer;
+
+use customer;
+
+INSERT INTO Customer (lname, fname, city, state, zipcode, registrationdate) VALUES
+                                                                                              ('Smith', 'John', 'New York', 'NY', 10001, CURDATE()),
+                                                                                              ('Doe', 'Jane', 'Los Angeles', 'CA', 90001, CURDATE()),
+                                                                                              ('Brown', 'Charlie', 'Chicago', 'IL', 60601, CURDATE()),
+                                                                                              ('Johnson', 'Emily', 'Houston', 'TX', 77001, CURDATE()),
+                                                                                              ('Taylor', 'Michael', 'Phoenix', 'AZ', 85001, CURDATE()),
+                                                                                              ('Anderson', 'Sarah', 'Philadelphia', 'PA', 19101, CURDATE()),
+                                                                                              ('Thomas', 'Chris', 'San Antonio', 'TX', 78201, CURDATE()),
+                                                                                              ('Jackson', 'Pat', 'San Diego', 'CA', 92101, CURDATE()),
+                                                                                              ('White', 'Kim', 'Dallas', 'TX', 75201, CURDATE()),
+                                                                                              ('Harris', 'Alex', 'San Jose', 'CA', 95101, CURDATE());
+
+select * from customer;
+
+ALTER TABLE customer
+    ADD last_updated DATE;
+
+UPDATE customer
+SET last_updated = '1994-01-26';
+
+SET SQL_SAFE_UPDATES = 0;
+
+
+ALTER TABLE vendor add lastupdate DATE;
+
+select * from vendor;
+
+update vendor set lastupdate = '2024-12-30';
+
+create table user (
+    userid int auto_increment primary key,
+    username varchar(20) not null,
+    email varchar(50) not null,
+    password varchar(50) not null,
+    createddate timestamp default current_timestamp
+);
+
+INSERT INTO user (username, email, password)
+VALUES
+    ('john_doe', 'john.doe@example.com', 'password123'),
+    ('jane_smith', 'jane.smith@example.com', 'securepass456'),
+    ('alice_jones', 'alice.jones@example.com', 'mypassword789'),
+    ('bob_brown', 'bob.brown@example.com', 'testpass321'),
+    ('emma_wilson', 'emma.wilson@example.com', 'hello12345');
+
+
+select * from user;
+
+select * from user where username = 'john_doe' and password = 'password123';

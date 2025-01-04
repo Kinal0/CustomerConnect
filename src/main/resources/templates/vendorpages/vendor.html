@@ -5,16 +5,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e3f6f5; /* Light blue-teal background */
-            color: #003b46; /* Dark teal text */
+            background-color: #ffffff; /* White background */
+            color: #333333; /* Dark gray text */
             margin: 0;
             padding: 20px;
         }
 
         h1 {
             text-align: center;
-            color: #07575b; /* Darker blue-teal */
+            color: #000000; /* Black for the title */
             margin-bottom: 20px;
+            font-size: 36px;
         }
 
         table {
@@ -28,58 +29,59 @@
         }
 
         table, th, td {
-            border: 1px solid #66a5ad; /* Teal border */
+            border: 1px solid #000000; /* Black border */
         }
 
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            font-size: 16px;
         }
 
         th {
-            background-color: #004d4d; /* Dark teal for headers */
+            background-color: #00695c; /* Teal background for header */
             color: #ffffff; /* White text for headers */
         }
 
         tr:nth-child(even) {
-            background-color: #d8f3f2; /* Light blue-teal for even rows */
+            background-color: #f2f2f2; /* Light gray for even rows */
         }
 
         tr:nth-child(odd) {
-            background-color: #f1fcfc; /* Very light blue-teal for odd rows */
+            background-color: #ffffff; /* White for odd rows */
+        }
+
+        tr:hover {
+            background-color: #d4f1f1; /* Light teal background on hover */
         }
 
         p {
             text-align: center;
-            color: #07575b; /* Blue-teal text for messages */
+            color: #000000; /* Black for messages */
             margin-top: 20px;
-        }
-
-        /* Add some hover effects for better interactivity */
-        tr:hover {
-            background-color: #b3e0df; /* Highlighted teal on hover */
+            font-size: 18px;
         }
 
         /* Button Styling */
         button {
-            background-color: #43bda9; /* Coral-red background */
+            background-color: #00695c; /* Teal background */
             color: white; /* White text */
             border: none;
             border-radius: 5px;
             padding: 10px 15px;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
         }
 
         button:hover {
-            background-color: #003b46; /* Darker red on hover */
+            background-color: #004d40; /* Darker teal on hover */
             transform: scale(1.05); /* Slight scaling effect */
         }
 
         button:active {
-            background-color: #30a2a9; /* Even darker red when clicked */
+            background-color: #00332d; /* Even darker teal when clicked */
         }
     </style>
 </head>
@@ -128,6 +130,6 @@
     </tbody>
 </table>
 
-<p th:if="${#lists.isEmpty(vendorlistforhtml)}">No customers found.</p>
+<p th:if="${#lists.isEmpty(vendorlistforhtml)}">No vendors found.</p>
 </body>
 </html>

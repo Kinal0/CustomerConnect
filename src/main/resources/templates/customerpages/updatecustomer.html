@@ -3,29 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F9F9F9; /* Light gray background */
+            color: #333333; /* Dark gray text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FA7518; /* Bright orange for the title */
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FFFFFF; /* White background for form */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333333;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #E0E0E0; /* Light gray border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        input[readonly] {
+            background-color: #F4F4F4; /* Light gray for readonly fields */
+            color: #888888; /* Muted text for readonly fields */
+        }
+
+        button {
+            background-color: #FA7518; /* Bright orange */
+            color: #FFFFFF; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #E0640F; /* Slightly darker orange on hover */
+        }
+
+        button:active {
+            background-color: #C5520D; /* Even darker orange on click */
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #FA7518; /* Orange outline on focus */
+            box-shadow: 0 0 5px rgba(250, 117, 24, 0.5); /* Subtle orange glow */
+        }
+    </style>
 </head>
 <body>
 
+<h1>Update Customer</h1>
+
 <form th:action="@{/customersection/update}" th:object="${customer}" method="post">
+    <label for="customerid">Customer ID</label>
+    <input type="text" id="customerid" th:field="*{customerid}" readonly>
 
-    <input type="text" th:field="*{customerid}" readonly>
-    <input type="text" th:field="*{registrationdate}" readonly>
-    <input type="text" th:field="*{last_updated}" readonly>
+    <label for="registrationdate">Registration Date</label>
+    <input type="text" id="registrationdate" th:field="*{registrationdate}" readonly>
 
-    <input type="text" th:field="*{lname}">
-    <input type="text" th:field="*{fname}">
-    <input type="text" th:field="*{city}">
-    <input type="text" th:field="*{state}">
-    <input type="number" th:field="*{zipcode}">
+    <label for="last_updated">Last Updated</label>
+    <input type="text" id="last_updated" th:field="*{last_updated}" readonly>
 
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" th:field="*{lname}">
 
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" th:field="*{fname}">
 
+    <label for="city">City</label>
+    <input type="text" id="city" th:field="*{city}">
 
-<button type="submit">Update Customer</button>
+    <label for="state">State</label>
+    <input type="text" id="state" th:field="*{state}">
 
+    <label for="zipcode">Zip Code</label>
+    <input type="number" id="zipcode" th:field="*{zipcode}">
+
+    <button type="submit">Update Customer</button>
 </form>
-
-
 
 </body>
 </html>

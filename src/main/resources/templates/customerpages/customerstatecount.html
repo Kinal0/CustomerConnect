@@ -5,53 +5,58 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #FFE6E1; /* Light peach background */
-            color: #4A1A0D; /* Dark brown text for contrast */
+            background-color: #F9F9F9; /* Light gray background */
+            color: #333333; /* Dark gray text for readability */
             margin: 0;
             padding: 20px;
         }
 
         h1 {
             text-align: center;
-            color: #D35400; /* Vibrant orange for the title */
+            color: #FA7518; /* Bright orange accent */
             margin-bottom: 20px;
+            font-size: 2em;
         }
 
         table {
             width: 80%;
-            margin: 0 auto;
+            margin: 20px auto;
             border-collapse: collapse;
             background-color: #FFFFFF; /* White table background */
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        table, th, td {
-            border: 1px solid #FFA07A; /* Light coral border */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for table */
         }
 
         th, td {
             padding: 12px;
             text-align: center;
+            border: 1px solid #E0E0E0; /* Light gray borders */
         }
 
         th {
-            background-color: #FF4500; /* Bright red-orange header */
+            background-color: #FA7518; /* Bright orange for header */
             color: #FFFFFF; /* White text for headers */
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         tr:nth-child(even) {
-            background-color: #FFDAB9; /* Light peach for even rows */
+            background-color: #F4F4F4; /* Light gray for even rows */
         }
 
         tr:nth-child(odd) {
-            background-color: #FFE4C4; /* Light beige for odd rows */
+            background-color: #FFFFFF; /* White for odd rows */
+        }
+
+        tr:hover {
+            background-color: #FAE0C4; /* Light orange for hover effect */
+            transition: background-color 0.3s ease;
         }
 
         p {
             text-align: center;
-            color: #B22222; /* Deep red for messages */
+            color: #FA7518; /* Bright orange for messages */
             margin-top: 20px;
             font-size: 1.2em;
         }
@@ -75,5 +80,6 @@
     </tbody>
 </table>
 
+<p th:if="${#lists.isEmpty(customerbystate)}">No customer data available.</p>
 </body>
 </html>
