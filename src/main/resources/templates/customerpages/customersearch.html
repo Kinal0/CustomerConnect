@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Search</title>
+</head>
+<body>
+
+<form th:action="@{/customersection/search}" method="post">
+
+    <input type="text" name="keyword">
+
+    <select name="type">
+        <option value="fname">First Name</option>
+        <option value="lname">Last Name</option>
+        <option value="city">City</option>
+        <option value="state">State</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+</body>
+</html>
+<!--localhost:8080/customersection/search?keyword=kinal&type=fname-->

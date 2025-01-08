@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.User;
+import com.example.demo.Repository.CustomerRepository;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +22,9 @@ public class HomepageController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
 
     @GetMapping("/login")
@@ -68,4 +73,78 @@ public class HomepageController {
         return "redirect:/login";
     }
 
+    @GetMapping("/customersection/search")
+    public String searchpage(){
+
+        return "customerpages/customersearch";
+    }
+
+    @PostMapping("/customersection/search")
+    public String searchpage(@RequestParam String keyword, String type, Model model){
+
+        List<Customer> customerlist = customerRepository.findAll();
+
+        ArrayList<Customer> resultlist = new ArrayList<>();
+        switch(type){
+            case "lname":
+
+                for(Customer s : customerlist){
+                    if(s.getLname().toLowerCase().contains(keyword.toLowerCase())){
+                        resultlist.add(s);
+                    }
+                }
+                break;
+            case "fname":
+
+                for(Customer s : customerlist){
+                    if(s.getFname().toLowerCase().contains(keyword.toLowerCase())){
+                        resultlist.add(s);
+                    }
+                }
+                break;
+
+            case "city" :
+            for(Customer s : customerlist){
+                if(s.getCity().toLowerCase().contains(keyword.toLowerCase())){
+                    resultlist.add(s);
+                }
+            }
+            break;
+
+            case "state" :
+                for(Customer s : customerlist){
+                    if(s.getState().toLowerCase().contains(keyword.toLowerCase())){
+                        resultlist.add(s);
+                    }
+                }
+
+                break;
+        }
+        model.addAttribute("customerlist",resultlist);
+        return "customerpages/searchresults";
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

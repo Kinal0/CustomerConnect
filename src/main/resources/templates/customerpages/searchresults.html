@@ -114,21 +114,6 @@
     </form>
 </div>
 
-<form th:action="@{/customersection/search}" method="post">
-
-    <input type="text" name="keyword">
-
-    <select name="type">
-        <option value="fname">First Name</option>
-        <option value="lname">Last Name</option>
-        <option value="city">City</option>
-        <option value="state">State</option>
-    </select>
-
-    <button type="submit">Search</button>
-</form>
-
-
 
 <table>
     <thead>
@@ -146,7 +131,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="customer : ${customerlistforhtml}">
+    <tr th:each="customer : ${customerlist}">
         <td th:text="${customer.customerid}"></td>
         <td th:text="${customer.fname}"></td>
         <td th:text="${customer.lname}"></td>
@@ -169,6 +154,6 @@
     </tbody>
 </table>
 
-<p th:if="${#lists.isEmpty(customerlistforhtml)}">No customers found.</p>
+<p th:if="${#lists.isEmpty(customerlist)}">No customers found.</p>
 </body>
 </html>
