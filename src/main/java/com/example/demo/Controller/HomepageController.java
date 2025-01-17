@@ -26,6 +26,11 @@ public class HomepageController {
     @Autowired
     CustomerRepository customerRepository;
 
+    @GetMapping("")
+    public String home(){
+        return "redirect:/login";
+    }
+
 
     @GetMapping("/login")
     public String userlogin(){
