@@ -16,5 +16,4 @@ The primary goal of Customer Connect is to provide users with the following feat
 Customer Connect aims to enhance user experience by providing an intuitive platform for managing customer and vendor relationships effectively.
 
 # Database setup
-
-![Screenshot 2025-01-25 at 11.58.01 PM.png](..%2F..%2FDesktop%2FScreenshot%202025-01-25%20at%2011.58.01%E2%80%AFPM.png)
+![database.png](database.png)
